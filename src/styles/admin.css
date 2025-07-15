@@ -1,0 +1,187 @@
+:root {
+  --primary: #2c3e50;
+  --accent: #3498db;
+  --accent-hover: #2980b9;
+  --bg-light: #f9f9f9;
+  --text-dark: #2d2d2d;
+  --success: #27ae60;
+  --danger: #e74c3c;
+  --border-radius: 8px;
+  --shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+body {
+  font-family: "Segoe UI", Roboto, sans-serif;
+  background-color: var(--bg-light);
+  color: var(--text-dark);
+}
+
+.admin-container {
+  max-width: 1100px;
+  margin: 40px auto;
+  padding: 30px;
+  background: #fff;
+  border-radius: var(--border-radius);
+  box-shadow: var(--shadow);
+}
+
+.admin-header {
+  font-size: 28px;
+  font-weight: 600;
+  color: var(--primary);
+  margin-bottom: 25px;
+  text-align: center;
+  border-bottom: 2px solid #eee;
+  padding-bottom: 10px;
+}
+
+.admin-button {
+  background-color: var(--accent);
+  color: #fff;
+  border: none;
+  padding: 10px 18px;
+  border-radius: var(--border-radius);
+  cursor: pointer;
+  transition: background 0.3s ease;
+  font-weight: 500;
+  margin-right: 10px;
+}
+
+.admin-button:hover {
+  background-color: var(--accent-hover);
+}
+
+.admin-button.danger {
+  background-color: var(--danger);
+}
+
+.admin-button.success {
+  background-color: var(--success);
+}
+
+.admin-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+  box-shadow: var(--shadow);
+}
+
+.admin-table th,
+.admin-table td {
+  padding: 14px 18px;
+  border-bottom: 1px solid #eee;
+  text-align: left;
+}
+
+.admin-table th {
+  background-color: #f4f6f8;
+  font-weight: 600;
+}
+
+.admin-table tr:hover {
+  background-color: #f1f1f1;
+}
+
+.admin-form {
+  margin-top: 20px;
+}
+
+.admin-form label {
+  font-weight: 600;
+  margin-bottom: 6px;
+  display: block;
+}
+
+.admin-form input,
+.admin-form textarea,
+.admin-form select {
+  width: 100%;
+  padding: 12px;
+  margin-bottom: 20px;
+  border-radius: var(--border-radius);
+  border: 1px solid #ccc;
+  box-shadow: none;
+  transition: border 0.2s;
+}
+
+.admin-form input:focus,
+.admin-form textarea:focus,
+.admin-form select:focus {
+  border-color: var(--accent);
+  outline: none;
+}
+
+.admin-form button {
+  margin-top: 10px;
+}
+input[type="file"] {
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  background-color: #f9f9f9;
+  font-size: 14px;
+  cursor: pointer;
+  width: 100%;
+  max-width: 400px;
+}
+.admin-section {
+  max-width: 800px;
+  margin: 40px auto;
+  padding: 30px;
+  background-color: #ffffff;
+  border-radius: 16px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+  font-family: "Segoe UI", sans-serif;
+}
+
+.admin-section h2 {
+  font-size: 28px;
+  margin-bottom: 20px;
+  color: #333;
+  text-align: center;
+  border-bottom: 2px solid #eee;
+  padding-bottom: 10px;
+}
+
+.admin-section ul {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+
+.admin-section li {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 14px 20px;
+  margin-bottom: 10px;
+  background-color: #f9f9f9;
+  border-left: 5px solid #4caf50;
+  border-radius: 8px;
+  transition: background-color 0.3s ease;
+}
+
+.admin-section li:hover {
+  background-color: #e8f5e9;
+  cursor: pointer;
+}
+
+.admin-section li span {
+  font-weight: 500;
+  color: #555;
+}
+
+@media screen and (max-width: 600px) {
+  .admin-section {
+    padding: 20px;
+  }
+
+  .admin-section h2 {
+    font-size: 22px;
+  }
+
+  .admin-section li {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}

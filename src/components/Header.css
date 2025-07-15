@@ -1,0 +1,46 @@
+.header {
+  background-color: #333;
+  color: white;
+  padding: 1rem 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.header h1 {
+  margin: 0;
+  font-size: 1.5rem;
+}
+
+.header h1 a {
+  color: white;
+  text-decoration: none;
+}
+
+.header nav {
+  display: flex;
+  gap: 1.5rem;
+}
+
+.header nav a {
+  color: white;
+  text-decoration: none;
+  font-weight: bold;
+  transition: color 0.3s;
+}
+
+.header nav a:hover {
+  color: #f0a500;
+}
+.logoutBtn {
+  background-color: #333;
+  border: #333;
+  color: white;
+  cursor: pointer;
+  font-weight: bold;
+  transition: color 0.3s;
+  font-size: 0.95rem;
+}
+.logoutBtn:hover {
+  color: #f0a500;
+}

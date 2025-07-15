@@ -1,0 +1,74 @@
+.admin-orders-container {
+  padding: 40px;
+  max-width: 1000px;
+  margin: auto;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.admin-orders-container h1 {
+  text-align: center;
+  margin-bottom: 30px;
+  color: #111827;
+}
+
+.order-card {
+  background-color: #ffffff;
+  border: 1px solid #e5e7eb;
+  border-radius: 10px;
+  padding: 25px;
+  margin-bottom: 25px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+.order-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.status {
+  padding: 5px 12px;
+  border-radius: 20px;
+  color: #fff;
+  font-size: 0.9rem;
+  text-transform: capitalize;
+}
+
+.status.processing {
+  background-color: #f59e0b;
+}
+.status.shipped {
+  background-color: #3b82f6;
+}
+.status.delivered {
+  background-color: #10b981;
+}
+
+.item-list {
+  list-style: none;
+  padding: 0;
+  margin-top: 15px;
+}
+
+.order-item {
+  display: flex;
+  justify-content: space-between;
+  border-bottom: 1px solid #e5e7eb;
+  padding: 10px 0;
+  font-size: 0.95rem;
+}
+
+.update-button {
+  margin-top: 20px;
+  padding: 10px 20px;
+  background-color: #2563eb;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.update-button:hover {
+  background-color: #1d4ed8;
+}
