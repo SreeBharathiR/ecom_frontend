@@ -16,18 +16,11 @@ const AdminOrders = () => {
       .catch((err) => console.error("Error fetching orders:", err));
   };
 
-  const updateStatus = (orderId, currentStatus) => {
-    const nextStatus =
-      currentStatus === "Processing"
-        ? "Shipped"
-        : currentStatus === "Shipped"
-        ? "Delivered"
-        : "Delivered";
-
+  const updateStatus = (orderId) => {
     axios
       .put(
         "http://localhost:5000/api/orders/status",
-        { orderId, status: nextStatus },
+        { orderId, status: "delivered" },
         { withCredentials: true }
       )
       .then(() => fetchOrders())
@@ -37,10 +30,11 @@ const AdminOrders = () => {
   return (
     <div className="admin-orders-container">
       <h1>📦 All Orders</h1>
-      {orders.length === 0 ? (
+
+      {orders?.length === 0 ? (
         <p>No orders found.</p>
       ) : (
-        orders.map((order) => (
+        orders?.map((order) => (
           <div className="order-card" key={order._id}>
             <div className="order-header">
               <h2>Order ID: {order._id.slice(-6)}</h2>
@@ -48,8 +42,9 @@ const AdminOrders = () => {
                 {order.status}
               </span>
             </div>
+
             <p>
-              <strong>User ID:</strong> {order.userId}
+              <strong>User Email:</strong> {order.userId?.email}
             </p>
             <p>
               <strong>Address:</strong> {order.address}
@@ -62,19 +57,18 @@ const AdminOrders = () => {
               {order.items.map((item, i) => (
                 <li key={i} className="order-item">
                   <span>{item.productId?.name}</span>
-                  <span>₹{item.productId?.price}</span>
+                  <span>₹{item.price}</span>
                   <span>Qty: {item.quantity}</span>
                 </li>
               ))}
             </ul>
 
-            {order.status !== "Delivered" && (
+            {(order.status === "paid" || order.status === "pending") && (
               <button
                 className="update-button"
-                onClick={() => updateStatus(order._id, order.status)}
+                onClick={() => updateStatus(order._id)}
               >
-                Mark as{" "}
-                {order.status === "Processing" ? "Shipped" : "Delivered"}
+                Mark as Delivered
               </button>
             )}
           </div>
