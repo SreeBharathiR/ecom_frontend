@@ -1,11 +1,9 @@
-import React, { useContext, useState } from "react";
+import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "../styles/checkout.css";
 import axios from "axios";
-import { AuthContext } from "../context/AuthContext";
 
 const CheckoutPage = () => {
-  const { user } = useContext(AuthContext);
   const navigate = useNavigate();
   const [form, setForm] = useState({
     name: "",
@@ -21,8 +19,8 @@ const CheckoutPage = () => {
     e.preventDefault();
 
     try {
-      const res = await axios.post(
-        "http://localhost:5000/api/orders/create",
+      await axios.post(
+        `${process.env.REACT_APP_BACKEND_URL}/api/orders/create`,
         {
           address: form.address,
           paymentMethod: form.payment,

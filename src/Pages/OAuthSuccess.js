@@ -10,9 +10,12 @@ const OAuthSuccess = () => {
   useEffect(() => {
     const fetchUser = async () => {
       try {
-        const res = await axios.get("http://localhost:5000/api/auth/me", {
-          withCredentials: true,
-        });
+        const res = await axios.get(
+          `${process.env.REACT_APP_BACKEND_URL}/api/auth/me`,
+          {
+            withCredentials: true,
+          }
+        );
         localStorage.setItem("customer", JSON.stringify(res.data));
         setUser(res.data);
         if (res.data.role === "admin") {
@@ -27,7 +30,7 @@ const OAuthSuccess = () => {
     };
 
     fetchUser();
-  }, []);
+  }, [navigate, setUser]);
 
   return <p>Processing Google Login...</p>;
 };

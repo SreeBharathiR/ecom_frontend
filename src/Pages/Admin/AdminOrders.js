@@ -11,7 +11,9 @@ const AdminOrders = () => {
 
   const fetchOrders = () => {
     axios
-      .get("http://localhost:5000/api/orders/all", { withCredentials: true })
+      .get(`${process.env.REACT_APP_BACKEND_URL}/api/orders/all`, {
+        withCredentials: true,
+      })
       .then((res) => setOrders(res.data))
       .catch((err) => console.error("Error fetching orders:", err));
   };
@@ -19,7 +21,7 @@ const AdminOrders = () => {
   const updateStatus = (orderId) => {
     axios
       .put(
-        "http://localhost:5000/api/orders/status",
+        `${process.env.REACT_APP_BACKEND_URL}/api/orders/status`,
         { orderId, status: "delivered" },
         { withCredentials: true }
       )

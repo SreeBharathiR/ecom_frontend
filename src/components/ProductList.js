@@ -8,16 +8,19 @@ function ProductList() {
 
   useEffect(() => {
     axios
-      .get("http://localhost:5000/api/products")
+      .get(`${process.env.REACT_APP_BACKEND_URL}/api/products`)
       .then((res) => setProducts(res.data))
       .catch((err) => console.error(err));
   }, []);
 
   return (
     <div className="product-grid">
-      {products.map((product) => (
+      {products?.map((product) => (
         <div className="product-card" key={product._id}>
-          <img src={product.imageUrl} alt={product.name} />
+          <img
+            src={`${process.env.REACT_APP_BACKEND_URL}${product.imageUrl}`}
+            alt={product.name}
+          />
           <h3>{product.name}</h3>
           <p>₹{product.price}</p>
           <Link to={`/product/${product._id}`}>View Details</Link>

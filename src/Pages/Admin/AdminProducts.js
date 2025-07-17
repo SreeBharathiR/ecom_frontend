@@ -9,16 +9,21 @@ const AdminProducts = () => {
 
   useEffect(() => {
     axios
-      .get("http://localhost:5000/api/products", { withCredentials: true })
+      .get(`${process.env.REACT_APP_BACKEND_URL}/api/products`, {
+        withCredentials: true,
+      })
       .then((res) => setProducts(res.data))
       .catch((err) => console.error("Error fetching products:", err));
   }, []);
 
   const deleteProduct = async (id) => {
     try {
-      await axios.delete(`http://localhost:5000/api/products/${id}`, {
-        withCredentials: true,
-      });
+      await axios.delete(
+        `${process.env.REACT_APP_BACKEND_URL}/api/products/${id}`,
+        {
+          withCredentials: true,
+        }
+      );
       setProducts(products.filter((p) => p._id !== id));
     } catch (err) {
       console.error("Error deleting product:", err);
@@ -53,7 +58,7 @@ const AdminProducts = () => {
               <tr key={product._id}>
                 <td>
                   <img
-                    src={product.imageUrl}
+                    src={`${process.env.REACT_APP_BACKEND_URL}${product.imageUrl}`}
                     alt={product.name}
                     style={{
                       width: "60px",

@@ -12,7 +12,9 @@ const CartPage = () => {
   };
   useEffect(() => {
     axios
-      .get("http://localhost:5000/api/carts", { withCredentials: true })
+      .get(`${process.env.REACT_APP_BACKEND_URL}/api/carts`, {
+        withCredentials: true,
+      })
       .then((res) => setCartItems(res.data.items))
       .catch((err) => console.error(err));
   }, []);

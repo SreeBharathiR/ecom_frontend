@@ -16,9 +16,13 @@ const AdminCreateProducts = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      await axios.post("http://localhost:5000/api/products", formData, {
-        withCredentials: true,
-      });
+      await axios.post(
+        `${process.env.REACT_APP_BACKEND_URL}/api/products`,
+        formData,
+        {
+          withCredentials: true,
+        }
+      );
       alert("Product created!");
       setFormData({ name: "", price: "", description: "" });
     } catch (err) {

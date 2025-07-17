@@ -19,7 +19,7 @@ const AdminProductForm = () => {
   useEffect(() => {
     if (id) {
       axios
-        .get(`http://localhost:5000/api/products/${id}`, {
+        .get(`${process.env.REACT_APP_BACKEND_URL}/api/products/${id}`, {
           withCredentials: true,
         })
         .then((res) => setForm(res.data))
@@ -46,16 +46,24 @@ const AdminProductForm = () => {
       }
       if (id) {
         // PUT request for updating
-        await axios.put(`http://localhost:5000/api/products/${id}`, formData, {
-          headers: { "Content-Type": "multipart/form-data" },
-          withCredentials: true,
-        });
+        await axios.put(
+          `${process.env.REACT_APP_BACKEND_URL}/api/products/${id}`,
+          formData,
+          {
+            headers: { "Content-Type": "multipart/form-data" },
+            withCredentials: true,
+          }
+        );
       } else {
         // POST request for creating
-        await axios.post("http://localhost:5000/api/products", formData, {
-          headers: { "Content-Type": "multipart/form-data" },
-          withCredentials: true,
-        });
+        await axios.post(
+          `${process.env.REACT_APP_BACKEND_URL}/api/products`,
+          formData,
+          {
+            headers: { "Content-Type": "multipart/form-data" },
+            withCredentials: true,
+          }
+        );
       }
 
       navigate("/admin/products");

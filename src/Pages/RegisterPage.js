@@ -14,7 +14,10 @@ function RegisterPage() {
   const handleRegister = async (e) => {
     e.preventDefault();
     try {
-      await axios.post("http://localhost:5000/api/users/register", form);
+      await axios.post(
+        `${process.env.REACT_APP_BACKEND_URL}/api/users/register`,
+        form
+      );
       alert("Registration successful");
       navigate("/login");
     } catch (err) {
@@ -22,7 +25,7 @@ function RegisterPage() {
     }
   };
   const handleGoogleLogin = () => {
-    window.location.href = "http://localhost:5000/api/auth/google";
+    window.location.href = `${process.env.REACT_APP_BACKEND_URL}/api/auth/google`;
   };
   return (
     <div className="auth-container">

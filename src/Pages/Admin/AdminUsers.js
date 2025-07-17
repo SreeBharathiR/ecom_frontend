@@ -7,7 +7,9 @@ const AdminUsers = () => {
 
   useEffect(() => {
     axios
-      .get("http://localhost:5000/api/users", { withCredentials: true })
+      .get(`${process.env.REACT_APP_BACKEND_URL}/api/users`, {
+        withCredentials: true,
+      })
       .then((res) => setUsers(res.data))
       .catch((err) => console.error(err));
   }, []);

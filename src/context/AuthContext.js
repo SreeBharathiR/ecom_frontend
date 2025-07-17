@@ -7,9 +7,12 @@ export const AuthContext = createContext();
 export const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(null);
   const [loading, setLoading] = useState(true);
+  console.log(process.env.REACT_APP_BACKEND_URL);
   useEffect(() => {
     axios
-      .get("http://localhost:5000/api/auth/me", { withCredentials: true })
+      .get(`${process.env.REACT_APP_BACKEND_URL}/api/auth/me`, {
+        withCredentials: true,
+      })
       .then((res) => {
         setUser(res.data);
       })
@@ -18,7 +21,7 @@ export const AuthProvider = ({ children }) => {
   }, []);
 
   const logout = async () => {
-    await axios.get("http://localhost:5000/api/auth/logout", {
+    await axios.get(`${process.env.REACT_APP_BACKEND_URL}/api/auth/logout`, {
       withCredentials: true,
     });
     setUser(null);

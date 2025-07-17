@@ -12,7 +12,7 @@ function ProductDetail() {
 
   useEffect(() => {
     axios
-      .get(`http://localhost:5000/api/products/${id}`)
+      .get(`${process.env.REACT_APP_BACKEND_URL}/api/products/${id}`)
       .then((res) => setProduct(res.data))
       .catch((err) => console.error(err));
   }, [id]);
@@ -23,7 +23,7 @@ function ProductDetail() {
     } else {
       axios
         .post(
-          "http://localhost:5000/api/carts/add",
+          `${process.env.REACT_APP_BACKEND_URL}/api/carts/add`,
           { productId: product._id },
           {
             withCredentials: true,
@@ -65,10 +65,14 @@ function ProductDetail() {
     }
     return stars;
   };
-
+  console.log(product.imageUr);
+  console.log(`${process.env.REACT_APP_BACKEND_URL}${product.imageUrl}`);
   return (
     <div className="product-detail-container">
-      <img src={product.imageUrl} alt={product.name} />
+      <img
+        src={`${process.env.REACT_APP_BACKEND_URL}${product.imageUrl}`}
+        alt={product.name}
+      />
       <div className="product-info">
         <h2>{product.name}</h2>
 

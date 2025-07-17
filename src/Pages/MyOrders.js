@@ -9,7 +9,7 @@ const MyOrders = () => {
 
   useEffect(() => {
     axios
-      .get("http://localhost:5000/api/orders/my-orders", {
+      .get(`${process.env.REACT_APP_BACKEND_URL}/api/orders/my-orders`, {
         withCredentials: true,
       })
       .then((res) => {
@@ -38,7 +38,7 @@ const MyOrders = () => {
 
     axios
       .post(
-        "http://localhost:5000/api/ratings",
+        `${process.env.REACT_APP_BACKEND_URL}/api/ratings`,
         { productId, rating },
         { withCredentials: true }
       )

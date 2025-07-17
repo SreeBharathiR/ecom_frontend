@@ -17,7 +17,7 @@ function LoginPage() {
     e.preventDefault();
     try {
       const res = await axios.post(
-        "http://localhost:5000/api/auth/login",
+        `${process.env.REACT_APP_BACKEND_URL}/api/auth/login`,
         form,
         {
           withCredentials: true,
@@ -37,7 +37,7 @@ function LoginPage() {
     }
   };
   const handleGoogleLogin = () => {
-    window.location.href = "http://localhost:5000/api/auth/google";
+    window.location.href = `${process.env.REACT_APP_BACKEND_URL}/api/auth/google`;
   };
   return (
     <div className="auth-container">
